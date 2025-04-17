@@ -28,6 +28,7 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
+    namespace "com.example.screen_lock_check"
     compileSdkVersion 29
 
     defaultConfig {
