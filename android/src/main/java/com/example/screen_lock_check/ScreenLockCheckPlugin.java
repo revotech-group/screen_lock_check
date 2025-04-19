@@ -1,25 +1,24 @@
 package com.example.screen_lock_check;
 
-import android.annotation.TargetApi;
-import android.app.KeyguardManager;
-import android.content.ContentResolver;
-import android.content.Context;
-import android.os.Build;
-import android.provider.Settings;
-import android.util.Log;
-
 import androidx.annotation.NonNull;
+
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
+import android.content.Context;
+import android.annotation.TargetApi;
+import android.os.Build; 
+import android.content.ContentResolver; 
+import android.provider.Settings;
+import android.app.KeyguardManager;
 
 /** ScreenLockCheckPlugin */
 public class ScreenLockCheckPlugin implements FlutterPlugin, MethodCallHandler {
   private MethodChannel channel;
   private static Context context = null;
+
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
@@ -36,13 +35,6 @@ public class ScreenLockCheckPlugin implements FlutterPlugin, MethodCallHandler {
       result.notImplemented();
     }
   }
-
-  @Override
-  public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-    channel.setMethodCallHandler(null);
-  }
-
-
   private static boolean isDeviceScreenLocked(Context appCon) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       return isDeviceLocked(appCon);
@@ -50,10 +42,6 @@ public class ScreenLockCheckPlugin implements FlutterPlugin, MethodCallHandler {
       return isPatternSet(appCon) || isPassOrPinSet(appCon);
     }
   }
-
-  /**
-   * @return true if pattern set, false if not (or if an issue when checking)
-   */
   private static boolean isPatternSet(Context appCon) {
 
     ContentResolver cr = appCon.getContentResolver();
@@ -64,22 +52,18 @@ public class ScreenLockCheckPlugin implements FlutterPlugin, MethodCallHandler {
       return false;
     }
   }
-
-  /**
-   * @return true if pass or pin set
-   */
   private static boolean isPassOrPinSet(Context appCon) {
     KeyguardManager keyguardManager = (KeyguardManager) appCon.getSystemService(Context.KEYGUARD_SERVICE); //api 16+
     return keyguardManager.isKeyguardSecure();
   }
 
-  /**
-   * @return true if pass or pin or pattern locks screen
-   */
+  @Override
+  public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+    channel.setMethodCallHandler(null);
+  }
   @TargetApi(23)
   private static boolean isDeviceLocked(Context appCon) {
     KeyguardManager keyguardManager = (KeyguardManager) appCon.getSystemService(Context.KEYGUARD_SERVICE); //api 23+
     return keyguardManager.isDeviceSecure();
   }
 }
-

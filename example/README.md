@@ -4,6 +4,13 @@ Demonstrates how to use the screen_lock_check plugin.
 
 ## Getting Started
 
-Run `flutter pub get` to install dependencies, and then `flutter run` to run the example app.
+This project is a starting point for a Flutter application.
 
-The app listens for a resume event and will update the status every time the app is resumed.
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
