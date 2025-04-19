@@ -9,7 +9,7 @@ class MockScreenLockCheckPlatform
     implements ScreenLockCheckPlatform {
 
   @override
-  Future<bool?> isScreenLockEnabled() => Future.value(true);
+  Future<bool> isScreenLockEnabled() => Future.value(true);
 }
 
 void main() {

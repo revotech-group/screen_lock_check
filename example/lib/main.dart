@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    bool? isScreenLockEnabled;
+    bool isScreenLockEnabled = false;
 
     try {
       isScreenLockEnabled = await ScreenLockCheck().isScreenLockEnabled();
@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _isScreenLockEnabled = isScreenLockEnabled!;
+      _isScreenLockEnabled = isScreenLockEnabled;
     });
   }
 

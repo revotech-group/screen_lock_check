@@ -17,7 +17,7 @@ void main() {
 
   testWidgets('getPlatformVersion test', (WidgetTester tester) async {
     final ScreenLockCheck plugin = ScreenLockCheck();
-    final bool? isScreenLockEnabled = await plugin.isScreenLockEnabled();
+    final bool isScreenLockEnabled = await plugin.isScreenLockEnabled();
     // The version string depends on the host platform running the test, so
     // just assert that some non-empty string is returned.
     expect(isScreenLockEnabled, true);

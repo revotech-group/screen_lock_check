@@ -23,7 +23,7 @@ abstract class ScreenLockCheckPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<bool?> isScreenLockEnabled() {
+  Future<bool> isScreenLockEnabled() {
     throw UnimplementedError('isScreenLockEnabled() has not been implemented.');
   }
 }

@@ -10,8 +10,8 @@ class MethodChannelScreenLockCheck extends ScreenLockCheckPlatform {
   final methodChannel = const MethodChannel('screen_lock_check');
 
   @override
-  Future<bool?> isScreenLockEnabled() async {
-    final isScreenLockEnabled = await methodChannel.invokeMethod<bool>('isScreenLockEnabled');
+  Future<bool> isScreenLockEnabled() async {
+    final isScreenLockEnabled = await methodChannel.invokeMethod<bool>('isScreenLockEnabled') ?? false;
     return isScreenLockEnabled;
   }
 }
